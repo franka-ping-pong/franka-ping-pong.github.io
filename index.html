@@ -3,494 +3,550 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="Franka-Ping-Pong">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
+  <title>Franka Ping Pong — 16-831 Course Project, CMU</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏓</text></svg>">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
-
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Sans+3:wght@300;400;600&family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
 
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
-  <!-- <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
-  <!-- <link rel="apple-touch-icon" href="static/images/favicon.ico"> -->
+    :root {
+      --bg:      #fdf6f8;   /* warm blush white            */
+      --surface: #f5e8ef;   /* dusty rose card surface     */
+      --ink:     #2a1a24;   /* deep plum-black text        */
+      --mid:     #7a5468;   /* muted mauve secondary text  */
+      --light:   #b899a8;   /* soft rose muted text        */
+      --border:  #e8d0dc;   /* blush-pink dividers         */
+      --accent:  #7c3f8c;   /* warm violet accent          */
+      --video-bg:#1a0d18;   /* deep plum video bg          */
+      --btn-ok:  #3a9e72;   /* sage green confirm          */
+      --overlay: rgba(253,246,248,.90);
+      --overlay-border: rgba(42,26,36,.10);
+    }
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦾</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦾</text></svg>">
+    /* ══════════════════════════════════════════════════════════
+       TYPOGRAPHY & LAYOUT CONSTANTS (not colors — don't swap)
+    ══════════════════════════════════════════════════════════ */
+    :root {
+      --serif: 'Spectral', Georgia, serif;
+      --sans:  'Source Sans 3', 'Helvetica Neue', sans-serif;
+      --mono:  'Source Code Pro', monospace;
+      --max:   1080px;
+    }
 
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 72px 0 52px;
+      text-align: center;
+    }
+
+    .venue {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      padding: 3px 10px;
+      margin-bottom: 26px;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(1.85rem, 4.5vw, 2.65rem);
+      line-height: 1.2;
+      letter-spacing: -.015em;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+
+    .authors {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .authors a {
+      color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      transition: border-color .15s, color .15s;
+    }
+    .authors a:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+    .authors .sep { color: var(--light); margin: 0 2px; }
+
+    .affil {
+      font-size: 14px;
+      color: var(--mid);
+      margin-bottom: 34px;
+    }
+    .affil sup { font-size: 10px; }
+
+    .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+
+    .lnk {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      font-family: var(--sans);
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--bg);
+      text-decoration: none;
+      transition: border-color .15s, background .15s, color .15s;
+    }
+    .lnk:hover { border-color: var(--ink); background: var(--ink); color: var(--bg); text-decoration: none; }
+    .lnk svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    .section { padding: 56px 0; }
+
+    .section-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.4rem;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    /* ── ABSTRACT ── */
+    #abstract p {
+      font-size: 16.5px;
+      line-height: 1.8;
+      color: var(--ink);
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    /* ── TEASER CAROUSEL ── */
+    .carousel {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--video-bg);
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .carousel-slide { min-width: 100%; }
+    .carousel-slide video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--overlay);
+      border: 1px solid var(--overlay-border);
+      border-radius: 2px;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 10; color: var(--ink);
+      transition: background .15s;
+    }
+    .carousel-btn:hover { background: var(--bg); }
+    .carousel-btn svg { width: 15px; height: 15px; }
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+    .carousel-dots {
+      display: flex; justify-content: center;
+      gap: 7px; padding: 10px 0 2px;
+    }
+    .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--border); border: none; cursor: pointer; padding: 0;
+      transition: background .2s;
+    }
+    .dot.active { background: var(--ink); }
+    .carousel-caption {
+      text-align: center;
+      font-size: 13.5px;
+      color: var(--mid);
+      min-height: 1.6em;
+      margin-top: 4px;
+      transition: opacity .2s;
+    }
+    .carousel-caption.fading { opacity: 0; }
+
+    /* ── RESULTS GRID ── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 560px) { .results-grid { grid-template-columns: 1fr; } }
+
+    .vcard {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .vcard video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+      background: var(--video-bg);
+      object-fit: cover;
+    }
+    .vcard-body {
+      padding: 12px 14px 14px;
+      border-top: 1px solid var(--border);
+    }
+    .vcard-title {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .vcard-sub {
+      font-size: 12.5px;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+    .vcard.wide { grid-column: 1 / -1; }
+    .vcard.wide video { aspect-ratio: 21/9; }
+
+    /* ── BIBTEX ── */
+    .bib-wrap {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 22px 22px 20px;
+    }
+    .bib-wrap pre {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: var(--ink);
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 14px; right: 14px;
+      padding: 4px 11px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 400;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: var(--bg);
+      cursor: pointer;
+      color: var(--mid);
+      transition: all .15s;
+    }
+    .copy-btn:hover { border-color: var(--ink); color: var(--ink); }
+    .copy-btn.ok { border-color: var(--btn-ok); color: var(--btn-ok); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 0 40px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    footer p { font-size: 12.5px; color: var(--light); }
+    footer a { color: var(--light); text-decoration: underline; }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero > * { animation: fadeUp .55s ease both; }
+    .hero .venue      { animation-delay: .00s; }
+    .hero h1          { animation-delay: .07s; }
+    .hero .authors    { animation-delay: .14s; }
+    .hero .affil      { animation-delay: .17s; }
+    .hero .links      { animation-delay: .22s; }
+  </style>
 </head>
 <body>
+<div class="page">
 
+  <!-- ══ TITLE ══ -->
+  <header class="hero">
 
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
+    <!-- EDIT: course / venue label -->
+    <div class="venue">CMU 16-831 &nbsp;·&nbsp; Spring 2026 Course Project</div>
 
-  <!-- More Works Dropdown -->
-  <!-- <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 1</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
+    <!-- EDIT: project title -->
+    <h1>Franka Ping Pong</h1>
+
+    <!-- EDIT: authors — add/remove <a> tags -->
+    <div class="authors">
+      <a href="#" target="_blank">Lalit Jayanti</a><sup>*</sup><span class="sep">&ensp;</span>
+      <a href="#" target="_blank">Vishal Mandadi</a><sup>*</sup><span class="sep">&ensp;</span>
+      <a href="#" target="_blank">Naman Kumar</a><sup>*</sup>
     </div>
-  </div> -->
 
-  <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Franka Ping Pong environment</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Lalit Jayanti</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Naman Kumar</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Vishal Mandadi</a><sup>*</sup>,</span>
-                  </span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Carnegie Mellon University<br>Spring 2026 16831 Course Project</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Report (Coming Soon)</span>
-                      </a>
-                    </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <!-- <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span> -->
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code (Coming Soon)</span>
-                  </a>
-                </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
-                <!-- <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span> -->
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- EDIT: affiliation -->
+    <div class="affil">
+      Robotics Institute, Carnegie Mellon University
+      <br><sup>*</sup>Equal contribution
     </div>
-  </div>
-</section>
 
-
-<!-- Teaser video-->
-<!-- <section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <source src="static/videos/random-agent-1.mp4" type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        The performance of a random agent in the proposed environment. 
-      </h2>
+    <!-- EDIT: buttons — remove any that aren't ready -->
+    <div class="links">
+      <a class="lnk" href="#" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Report <span style="color:var(--light);font-size:12px;">(coming soon)</span>
+      </a>
+      <a class="lnk" href="#" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        Code <span style="color:var(--light);font-size:12px;">(coming soon)</span>
+      </a>
     </div>
-  </div>
-</section> -->
-<!-- End teaser video -->
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <source src="static/videos/random-agent-1.mp4" type="video/mp4">
+  </header>
+
+  <hr class="rule">
+
+  <div class="section" id="teaser">
+
+    <div class="carousel" id="teaser-carousel">
+      <div class="carousel-track" id="carousel-track">
+
+        <!-- SLIDE 1 — EDIT src and matching caption[0] below -->
+        <div class="carousel-slide">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="static/videos/random-agent.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <source src="static/videos/random-agent-1.mp4" type="video/mp4">
+
+        <!-- SLIDE 2 — EDIT src and matching caption[1] below -->
+        <div class="carousel-slide">
+          <video muted loop playsinline preload="metadata">
+            <source src="static/videos/ppo-vanilla.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <source src="static/videos/random-agent-1.mp4" type="video/mp4">
+
+        <!-- SLIDE 3 — EDIT src and matching caption[2] below -->
+        <div class="carousel-slide">
+          <video muted loop playsinline preload="metadata">
+            <source src="static/videos/ppo-parallel.mp4" type="video/mp4">
           </video>
         </div>
-      </div>
-    </div>
+
+        <!-- SLIDE 4 — EDIT src and matching caption[3] below -->
+        <div class="carousel-slide">
+          <video muted loop playsinline preload="metadata">
+            <source src="static/videos/ppo-shaped.mp4" type="video/mp4">
+          </video>
+        </div>
+
+      </div><!-- /.carousel-track -->
+
+      <button class="carousel-btn prev" onclick="carouselMove(-1)" aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel-btn next" onclick="carouselMove(1)" aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div><!-- /.carousel -->
+
+    <div class="carousel-dots" id="carousel-dots"></div>
+    <p class="carousel-caption" id="carousel-caption"></p>
+
   </div>
-</section>
-<!-- End video carousel -->
 
+  <hr class="rule">
 
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            We propose a manipulation task where a Franka Panda robot with a paddle must keep a ping-pong ball in the air by repeatedly bouncing it. The environment models basic ball flight and contact dynamics, and performance is measured by the total air-time of the ball. We define the observation and action spaces, design a reward function to encourage stable bouncing, and propose to evaluate PPO under different task variations and levels of parallelized training, comparing with relevant baselines.
-          </p>
+  <div class="section" id="abstract">
+    <h2 class="section-title">Abstract</h2>
+    <p>
+      We study reinforcement learning for a contact-rich robot manipulation task in which a Franka Panda arm with a paddle must keep a ping-pong ball airborne through repeated bouncing. For the midterm milestone, we completed experiments with one on-policy policy-gradient method, PPO, and one off-policy Q-function-based method, SAC. We compare both methods against a random-agent baseline on the same task using mean episodic return versus training environment steps. Our current results show that PPO learns useful behavior earlier in training, while SAC improves more slowly at first but appears to converge to a higher final reward. We also analyze how PPO performance changes as the number of parallel training environments increases, and observe that intermediate-scale parallelism currently works best in our setup. Finally, we outline two modifications for the final project: multi-task training over environment variants and methods for scaling policy learning under very large parallel rollouts.
+    </p>
+  </div>
+
+  <hr class="rule">
+
+  <div class="section" id="results">
+    <h2 class="section-title">Agent Performance</h2>
+
+    <div class="results-grid">
+
+      <div class="vcard">
+        <video controls muted loop playsinline preload="metadata">
+          <source src="static/videos/ppo-agent.mp4" type="video/mp4">
+        </video>
+        <div class="vcard-body">
+          <div class="vcard-title">PPO Agent</div>
         </div>
       </div>
+
+      <div class="vcard">
+        <video controls muted loop playsinline preload="metadata">
+          <source src="static/videos/sac-agent.mp4" type="video/mp4">
+        </video>
+        <div class="vcard-body">
+          <div class="vcard-title">SAC Agent</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <video controls muted loop playsinline preload="metadata">
+          <source src="static/videos/random-agent.mp4" type="video/mp4">
+        </video>
+        <div class="vcard-body">
+          <div class="vcard-title">Random Agent</div>
+        </div>
+      </div>
+
     </div>
   </div>
-</section>
-<!-- End paper abstract -->
 
+  <hr class="rule">
 
-<!-- Image carousel -->
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
+  <!-- ══ BIBTEX (uncomment once published) ══ -->
+  <!--
+  <div class="section" id="bibtex">
+    <h2 class="section-title">BibTeX</h2>
+    <div class="bib-wrap">
+      <button class="copy-btn" id="copyBtn" onclick="doCopy()">Copy</button>
+      <pre id="bibtext">@article{authors2026frankaping,
+  title   = {Franka Ping Pong: A Robotic Manipulation Environment
+             for Learning Continuous Contact Tasks},
+  author  = {Author, One and Author, Two and Author, Three},
+  year    = {2026},
+  url     = {https://your-domain.com/franka-ping-pong}
+}</pre>
     </div>
   </div>
+  <hr class="rule">
+  -->
+
 </div>
-</div>
-</section> -->
-<!-- End image carousel -->
 
+<script>
+  const captions = [
+    'PPO agent',
+    'SAC agent',
+    'Random agent',
+  ];
 
+  let cur = 0;
+  const track   = document.getElementById('carousel-track');
+  const capEl   = document.getElementById('carousel-caption');
+  const dotsEl  = document.getElementById('carousel-dots');
+  const slides  = track ? track.querySelectorAll('.carousel-slide') : [];
+  const total   = slides.length;
 
+  /* Build dots */
+  captions.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Slide ' + (i + 1));
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
 
-<!-- Youtube video -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-<!-- End youtube video -->
+  function updateDots() {
+    dotsEl.querySelectorAll('.dot').forEach((d, i) =>
+      d.classList.toggle('active', i === cur));
+  }
 
-<!-- Paper poster -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
+  function updateCaption() {
+    capEl.classList.add('fading');
+    setTimeout(() => {
+      capEl.textContent = captions[cur] || '';
+      capEl.classList.remove('fading');
+    }, 200);
+  }
 
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section> -->
-<!--End paper poster -->
+  function manageVideos(prev, next) {
+    /* Pause old slide's video, play new slide's video */
+    const vPrev = slides[prev] && slides[prev].querySelector('video');
+    const vNext = slides[next] && slides[next].querySelector('video');
+    if (vPrev) vPrev.pause();
+    if (vNext) { vNext.currentTime = 0; vNext.play().catch(() => {}); }
+  }
 
+  function goTo(index) {
+    const prev = cur;
+    cur = (index + total) % total;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    manageVideos(prev, cur);
+    updateDots();
+    updateCaption();
+  }
 
+  function carouselMove(dir) { goTo(cur + dir); }
 
-<!--BibTex citation -->
-  <!-- <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
-    </div>
-</section> -->
-<!--End BibTex citation -->
+  /* Keyboard navigation */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  carouselMove(-1);
+    if (e.key === 'ArrowRight') carouselMove(1);
+  });
 
+  /* Touch / swipe */
+  let touchStartX = null;
+  const carouselEl = document.getElementById('teaser-carousel');
+  if (carouselEl) {
+    carouselEl.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    carouselEl.addEventListener('touchend', e => {
+      if (touchStartX === null) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) carouselMove(dx < 0 ? 1 : -1);
+      touchStartX = null;
+    });
+  }
 
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
+  /* Init */
+  if (total > 0) {
+    capEl.textContent = captions[0] || '';
+    const firstVid = slides[0] && slides[0].querySelector('video');
+    if (firstVid) firstVid.play().catch(() => {});
+  }
 
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+  /* ════ BibTeX copy ════ */
+  function doCopy() {
+    const text = document.getElementById('bibtext').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2200);
+    });
+  }
+</script>
+</body>
+</html>
