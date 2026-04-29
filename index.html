@@ -345,28 +345,30 @@
     <div class="carousel" id="teaser-carousel">
       <div class="carousel-track" id="carousel-track">
 
-        <!-- SLIDE 1 — EDIT src and matching caption[0] below -->
         <div class="carousel-slide">
           <video autoplay muted loop playsinline preload="metadata">
             <source src="static/videos/ppo_envs_512.mp4" type="video/mp4">
           </video>
         </div>
 
-        <!-- SLIDE 2 — EDIT src and matching caption[1] below -->
         <div class="carousel-slide">
           <video muted loop playsinline preload="metadata">
             <source src="static/videos/pingpong_sac.mp4" type="video/mp4">
           </video>
         </div>
 
-        <!-- SLIDE 3 — EDIT src and matching caption[2] below -->
+        <div class="carousel-slide">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="static/videos/pingpong_dyna_sac.mp4" type="video/mp4">
+          </video>
+        </div>
+
         <div class="carousel-slide">
           <video muted loop playsinline preload="metadata">
             <source src="static/videos/random-agent-1.mp4" type="video/mp4">
           </video>
         </div>
 
-        <!-- SLIDE 4 — EDIT src and matching caption[3] below -->
         <div class="carousel-slide">
           <video muted loop playsinline preload="metadata">
             <source src="static/videos/ppo_envs_1024.mp4" type="video/mp4">
@@ -406,10 +408,28 @@
 
       <div class="vcard">
         <video controls muted loop playsinline preload="metadata">
+          <source src="static/videos/ppo_envs_512.mp4" type="video/mp4">
+        </video>
+        <div class="vcard-body">
+          <div class="vcard-title">PPO - 512 envs</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <video controls muted loop playsinline preload="metadata">
           <source src="static/videos/pingpong_sac.mp4" type="video/mp4">
         </video>
         <div class="vcard-body">
           <div class="vcard-title">SAC Agent</div>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <video controls muted loop playsinline preload="metadata">
+          <source src="static/videos/pingpong_dyna_sac.mp4" type="video/mp4">
+        </video>
+        <div class="vcard-body">
+          <div class="vcard-title">Dyna SAC Agent</div>
         </div>
       </div>
       
@@ -484,16 +504,7 @@
           <div class="vcard-title">PPO Baseline - 4096</div>
         </div>
       </div>
-      
-      <div class="vcard">
-        <video controls muted loop playsinline preload="metadata">
-          <source src="static/videos/ppo_envs_512.mp4" type="video/mp4">
-        </video>
-        <div class="vcard-body">
-          <div class="vcard-title">PPO - 512 envs</div>
-        </div>
-      </div>
-      
+            
       <div class="vcard">
         <video controls muted loop playsinline preload="metadata">
           <source src="static/videos/ppo_envs_1024.mp4" type="video/mp4">
@@ -577,6 +588,7 @@
   const captions = [
     'PPO agent - 512 envs',
     'SAC agent - 4096 envs',
+    'Dyna SAC agent - 4096',
     'Random agent',
     'PPO agent - 1024 envs',
   ];
